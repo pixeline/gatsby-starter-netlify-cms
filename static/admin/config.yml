@@ -28,6 +28,18 @@ collections:
         widget: string
         hint: Where did you find this quote ? (URL)
         default: ""
+      - label: Author
+        name: author
+        required: true
+        widget: relation
+        hint: Select the Author
+        default: ""
+        collection: authors
+        displayFields: fullname
+        searchFields: fullname
+        valueField: ""
+        multiple: ""
+        optionsLength: 20
     identifier_field: quote
   - name: authors
     label: Authors
