@@ -1,0 +1,62 @@
+backend:
+  name: git-gateway
+  branch: master
+  commit_messages:
+    create: Create {{collection}} “{{slug}}”
+    update: Update {{collection}} “{{slug}}”
+    delete: Delete {{collection}} “{{slug}}”
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+media_folder: static/img
+public_folder: /img
+collections:
+  - name: quotes
+    label: Quotes
+    folder: src/pages/quotes
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: Quote
+        name: quote
+        required: true
+        widget: string
+        hint: Write the quote here
+        default: ""
+      - label: Source
+        name: source
+        required: false
+        widget: string
+        hint: Where did you find this quote ? (URL)
+        default: ""
+    identifier_field: quote
+  - name: authors
+    label: Authors
+    folder: src/pages/authors
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: Full Name
+        name: fullname
+        required: true
+        widget: string
+        hint: First and Last Name
+        default: ""
+      - label: Gender
+        name: gender
+        required: true
+        widget: select
+        hint: Man or Woman ?
+        default: Man
+        options:
+          - Man
+          - " Woman"
+          - " Unknown"
+        multiple: ""
+      - label: Picture
+        name: picture
+        required: false
+        widget: image
+        hint: ""
+        default: ""
+        allow_multiple: false
+    identifier_field: fullname
